@@ -1,0 +1,125 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" currentTimeline="1" xflVersion="2.1" creatorInfo="Adobe Flash Professional CS5.5" platform="Windows" versionInfo="Saved by Adobe Flash Windows 11.5 build 325" majorVersion="11" minorVersion="5" buildNumber="325" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="actions" color="#9933CC" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <Actionscript>
+                                        <script><![CDATA[include "helloworld.as";]]></script>
+                                   </Actionscript>
+                                   <elements/>
+                              </DOMFrame>
+                              <DOMFrame index="1" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                              <DOMFrame index="2" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                              <DOMFrame index="3" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                              <DOMFrame index="4" keyMode="9728">
+                                   <elements/>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+                    <DOMLayer name="Background" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMStaticText width="105.8" height="32.1" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="223.25" ty="183.9"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Month view</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="26" bitmapSize="520" face="BuxtonSketch" fillColor="#33FF66"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                              <DOMFrame index="1" keyMode="9728">
+                                   <elements>
+                                        <DOMStaticText width="93.75" height="32.1" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="223.25" ty="183.9"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Week view</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="26" bitmapSize="520" face="BuxtonSketch" fillColor="#33FF66"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                              <DOMFrame index="2" keyMode="9728">
+                                   <elements>
+                                        <DOMStaticText width="81.6" height="32.1" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="223.25" ty="183.9"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Day view</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="26" face="BuxtonSketch" fillColor="#33FF66"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                              <DOMFrame index="3" keyMode="9728">
+                                   <elements>
+                                        <DOMStaticText width="89.45" height="32.1" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="223.25" ty="183.9"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Task view</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="26" face="BuxtonSketch" fillColor="#33FF66"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                              <DOMFrame index="4" keyMode="9728">
+                                   <elements>
+                                        <DOMStaticText width="81.55" height="32.1" autoExpand="true" isSelectable="false">
+                                             <matrix>
+                                                  <Matrix tx="223.25" ty="183.9"/>
+                                             </matrix>
+                                             <textRuns>
+                                                  <DOMTextRun>
+                                                       <characters>Add Task</characters>
+                                                       <textAttrs>
+                                                            <DOMTextAttrs aliasText="false" size="26" face="BuxtonSketch" fillColor="#33FF66"/>
+                                                       </textAttrs>
+                                                  </DOMTextRun>
+                                             </textRuns>
+                                        </DOMStaticText>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="6570" publishTime="1349346402"/>
+          <PublishItem publishSize="6564" publishTime="1349346061"/>
+          <PublishItem publishSize="6560" publishTime="1349345727"/>
+     </publishHistory>
+</DOMDocument>
