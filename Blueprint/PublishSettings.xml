@@ -38,12 +38,12 @@
     <VersionInfo>12,0,0,0;11,2,0,0;11,1,0,0;10,3,0,0;10,2,153,0;10,1,52,0;9,0,124,0;8,0,24,0;7,0,14,0;6,0,79,0;5,0,58,0;4,0,32,0;3,0,8,0;2,0,1,12;1,0,0,1;</VersionInfo>
     <UsingDefaultContentFilename>1</UsingDefaultContentFilename>
     <UsingDefaultAlternateFilename>1</UsingDefaultAlternateFilename>
-    <ContentFilename>Blueprint_content.html</ContentFilename>
-    <AlternateFilename>Blueprint_alternate.html</AlternateFilename>
+    <ContentFilename>Blueprint.xfl_content.html</ContentFilename>
+    <AlternateFilename>Blueprint.xfl_alternate.html</AlternateFilename>
     <UsingOwnAlternateFile>0</UsingOwnAlternateFile>
     <OwnAlternateFilename></OwnAlternateFilename>
     <Width>600</Width>
-    <Height>450</Height>
+    <Height>420</Height>
     <Align>0</Align>
     <Units>0</Units>
     <Loop>1</Loop>
@@ -72,8 +72,8 @@
     <EventFormat>0</EventFormat>
     <EventCompress>7</EventCompress>
     <OverrideSounds>0</OverrideSounds>
-    <Version>11</Version>
-    <ExternalPlayer>FlashPlayer10.2</ExternalPlayer>
+    <Version>15</Version>
+    <ExternalPlayer>FlashPlayer11.2</ExternalPlayer>
     <ActionScriptVersion>3</ActionScriptVersion>
     <PackageExportFrame>1</PackageExportFrame>
     <PackagePaths></PackagePaths>
@@ -82,6 +82,7 @@
     <DebuggingPermitted>0</DebuggingPermitted>
     <DebuggingPassword></DebuggingPassword>
     <CompressMovie>1</CompressMovie>
+    <CompressionType>0</CompressionType>
     <InvisibleLayer>1</InvisibleLayer>
     <DeviceSound>0</DeviceSound>
     <StreamUse8kSampleRate>0</StreamUse8kSampleRate>
@@ -127,7 +128,7 @@
   </PublishFlashProperties>
   <PublishJpegProperties enabled="true">
     <Width>600</Width>
-    <Height>450</Height>
+    <Height>420</Height>
     <Progressive>0</Progressive>
     <DPI>4718592</DPI>
     <Size>0</Size>
@@ -153,7 +154,7 @@
   </PublishRNWKProperties>
   <PublishGifProperties enabled="true">
     <Width>600</Width>
-    <Height>450</Height>
+    <Height>420</Height>
     <Animated>0</Animated>
     <MatchMovieDim>1</MatchMovieDim>
     <Loop>1</Loop>
@@ -172,7 +173,7 @@
   </PublishGifProperties>
   <PublishPNGProperties enabled="true">
     <Width>600</Width>
-    <Height>450</Height>
+    <Height>420</Height>
     <OptimizeColors>1</OptimizeColors>
     <Interlace>0</Interlace>
     <Transparent>0</Transparent>
@@ -189,7 +190,7 @@
   </PublishPNGProperties>
   <PublishQTProperties enabled="true">
     <Width>600</Width>
-    <Height>450</Height>
+    <Height>420</Height>
     <MatchMovieDim>1</MatchMovieDim>
     <UseQTSoundCompression>0</UseQTSoundCompression>
     <AlphaOption></AlphaOption>
