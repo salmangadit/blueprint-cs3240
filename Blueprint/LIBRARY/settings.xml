@@ -5,13 +5,7 @@
         <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
           <frames>
             <DOMFrame index="0" keyMode="9728">
-              <elements>
-                <DOMBitmapInstance libraryItemName="Bitmap 2">
-                  <matrix>
-                    <Matrix a="14.9205780029297" d="-15.1869049072266"/>
-                  </matrix>
-                </DOMBitmapInstance>
-              </elements>
+              <elements/>
             </DOMFrame>
           </frames>
         </DOMLayer>
