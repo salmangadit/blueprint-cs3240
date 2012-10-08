@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="tuesdayWeekView" itemID="50728f82-000001ed" symbolType="button" lastModified="1349709282">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="tuesdayWeekView" itemID="50728f82-000001ed" symbolType="button" lastModified="1349710267">
   <timeline>
     <DOMTimeline name="tuesdayWeekView">
       <layers>
@@ -6,7 +6,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMStaticText width="61" height="16" autoExpand="true" isSelectable="false">
+                <DOMStaticText width="70.55" height="25.3" autoExpand="true" isSelectable="false">
                   <matrix>
                     <Matrix tx="2" ty="2"/>
                   </matrix>
