@@ -725,6 +725,7 @@ function Header(calendar, options) {
 				}
 				var prevButton;
 				$.each(this.split(','), function(j, buttonName) {
+					console.log(calendar);
 					if (buttonName == 'title') {
 						e.append("<span class='fc-header-title'><h2>&nbsp;</h2></span>");
 						if (prevButton) {
