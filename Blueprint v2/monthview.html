@@ -2,6 +2,7 @@
 <html> 
 <head> 
 	<title>Blueprint</title> 
+	<link href="http://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
     <link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.print.css' media='print' />
@@ -11,14 +12,34 @@
 	<script type='text/javascript' src='fullcalendar/fullcalendar.js'></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script type='text/javascript'>
-
+	
+	
 	$(document).ready(function() {
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		
-		var eventsData =  [
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			
+			eventClick: function(calEvent, jsEvent, view) {
+        
+		
+		console.log(calEvent.title);
+        // change the border color just for fun
+        $(this).css('border-color', 'blue');
+		$('#task_desc').html(calEvent.title);
+		$('#popupPanel').popup("open");
+
+    }, 
+			
+			editable: true,
+			events: [
 				{
 					title: 'All Day Event',
 					start: new Date(y, m, 1)
@@ -85,6 +106,10 @@
 			editable: true,
 			events: eventsData
 		});
+		$( "#popup_img" ).rel("popup");
+		$( "#popup_img" ).popup("open");
+		//$( 'div[data-role=popup]' ).popup();
+		//$('#foo').slideUp(300).delay(800).fadeIn(400);
 		$('.fc-header-right').css("display","none");
 		showMonthView();
 	});
@@ -116,7 +141,6 @@ $( document ).on( "pageinit", function() {
 </script>
 
 <style type='text/css'>
-
 	body {
 		margin-top: 40px;
 		text-align: center;
@@ -143,14 +167,31 @@ $( document ).on( "pageinit", function() {
 	#popupPanel .ui-btn {
 		margin: 2em 15px;
 	}
-		
+	
+	#chi_container div, #chi_container img{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 35%;
+	height: 110%;
+	}
+	
 </style>
 </head> 
 <body> 
 
+<div data-role="popup" id="popup_img">
+	<img src="blueprint_logo.png" alt="blueprint"></img>
+</div>
+
+
 <div data-role="page">
 	<div data-role="header" data-theme="b">
-		<h1>Welcome to Blueprint</h1>
+		<div id = "chi_container">
+		<div id="chi_image"><img src="blueprint_logo.png" alt="BLUEPRINT"></div>
+		</div>
+		<p style="font-size: 58px; margin-top: 10px; margin-bottom: 0px; margin-left: 10px; margin-right: 10px; text-align: center; font-family: 'Reenie Beanie', cursive;">
+		Welcome to your Blueprint</p>
 		<div data-role="controlgroup" data-type="horizontal">
 			<div class="ui-btn-right">
 				<a href="index.html" data-icon="gear" data-role="button" data-theme="d">Settings</a>
@@ -246,9 +287,7 @@ $( document ).on( "pageinit", function() {
 	</div><!-- /header -->
 	
 	<div data-role="content" id='calendar'>		
-			
-		<a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button">Open panel</a>
-				
+						
 		<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
 
 		<div id="task_desc"></div>
@@ -260,7 +299,7 @@ $( document ).on( "pageinit", function() {
 	</div><!-- /content -->
 
 	
-	<div data-role="footer" data-theme="b"> 
+	<div data-role="footer" data-position="fixed" data-theme="b"> 
 		<div data-role="navbar">
 			<ul>
 				<li><a href="" onclick="showDayView()">Day View</a></li>
