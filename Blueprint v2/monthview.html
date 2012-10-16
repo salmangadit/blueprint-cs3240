@@ -18,26 +18,7 @@
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			
-			eventClick: function(calEvent, jsEvent, view) {
-        
-		
-		console.log(calEvent.title);
-        // change the border color just for fun
-        $(this).css('border-color', 'red');
-		$('#task_desc').html(calEvent.title);
-		$('#popupPanel').popup("open");
-
-    }, 
-			
-			editable: true,
-			events: [
+		var eventsData =  [
 				{
 					title: 'All Day Event',
 					start: new Date(y, m, 1)
@@ -81,7 +62,28 @@
 					start: new Date(y, m, 28),
 					end: new Date(y, m, 29),
 				}
-			]
+			];
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			
+			eventClick: function(calEvent, jsEvent, view) {
+        
+		
+		console.log(calEvent.title);
+        // change the border color just for fun
+        $(this).css('border-color', 'red');
+		$('#task_desc').html(calEvent.title);
+		$('#popupPanel').popup("open");
+
+    }, 
+			
+			editable: true,
+			events: eventsData
 		});
 		$('.fc-header-right').css("display","none");
 		showMonthView();
@@ -104,18 +106,12 @@
 <script type='text/javascript'>
 
 $( document ).on( "pageinit", function() {
-    $( "#chinab" ).on({
+    $( "#addTask" ).on({
         popupbeforeposition: function() {
             var maxHeight = $( window ).height() - 60 + "px";
-            $( "#chinab" ).css( "max-height", maxHeight );
+            $( "#addTask" ).css( "max-height", maxHeight );
         }
     });
-});
-
-
-$('#calendar').fullCalendar({
-    
-});
 
 </script>
 
@@ -158,11 +154,11 @@ $('#calendar').fullCalendar({
 		<div data-role="controlgroup" data-type="horizontal">
 			<div class="ui-btn-right">
 				<a href="index.html" data-icon="gear" data-role="button" data-theme="d">Settings</a>
-				<a href="#chinab" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
+				<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
 			</div>
 			
 			
-<div data-role="popup" id="chinab">
+<div data-role="popup" id="addTask">
     <div data-role="content">
         <form action="">
             <div data-role="fieldcontain">
@@ -173,63 +169,76 @@ $('#calendar').fullCalendar({
                     value="" type="text">
             </div>
             <div data-role="fieldcontain">
-                    <label for="textinput2">
+                    <label for="startdate">
+                    Start
+                    </label>
+                    <input name="" id="startdate" placeholder="" value="" type="date">
+            </div>            
+            <div data-role="fieldcontain">
+                    <label for="deadline">
                         Deadline
                     </label>
-                    <input name="" id="textinput2" placeholder="" value="" type="date">
-            </div>
-            <div data-role="fieldcontain" class="ui-grid-b ui-br">
-            	<div class="ui-block-a">
-                    <label for="textinput3">
-                        Task Length
-                    </label>
-                </div>
-                <div class="ui-block-b">
-                    <input name="" id="textinput3" placeholder="" value="" type="text">
-                </div>
-                <div class="ui-block-c">
-                    <label for="selectmenu3">
-                </label>
-                <select name="">
-                    <option value="option1">
-                        minutes
-                    </option>
-                    <option value="value">
-                        hours
-                    </option>
-                    <option value="value">
-                        days
-                    </option>
-                </select>
-            	</div>
+                    <input name="" id="deadline" placeholder="" value="" type="date">
             </div>
             <div data-role="fieldcontain">
             	<fieldset data-role="controlgroup" data-type="horizontal">
                     <legend>
                         Priority:
                     </legend>
-                    <input id="radio2" name="" value="radio1" type="radio" checked="checked">
-                    <label for="radio2">
+                    <input id="high" name="" value="high" type="radio" checked="checked">
+                    <label for="high">
                         	High
                     </label>
-                    <input id="radio3" name="" value="radio3" type="radio">
-                    <label for="radio3">
+                    <input id="medium" name="" value="medium" type="radio">
+                    <label for="medium">
                     	Medium
                     </label>
-                    <input id="radio4" name="" value="radio4" type="radio">
-                    <label for="radio4">
+                    <input id="low" name="" value="low" type="radio">
+                    <label for="low">
                         Low
                     </label>
                 </fieldset>
         	</div>
-        <input type="submit" value="Add task">
+        	<script type='text/javascript'>
+    
+    function submitTask(){
+    	var newTask=[
+    	{
+    		title : $("#description").val(),
+    		start : new Date($("#startdate").val()),
+    		end : new Date($("#deadline").val()),
+    		color : function(){
+    			if($("#high").attr("checked")=="checked")
+    			{
+    				console.log("high checked");
+    				return '#378006';
+    			}
+    			else if($("#medium").attr("checked")=="checked")
+    			{
+    				console.log("medium checked");
+    				return '#300000';
+    			}
+    			else($("#low").attr("checked")=="checked")
+    			{
+    				console.log("low checked");
+    				return '#304050';
+    			}
+    		}()
+    	}
+    	];
+    	
+    	$('#calendar').fullCalendar( 'addEventSource', newTask );
+    }
+
+</script>
+        <a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitTask()">Add Task</a>
         </form>
     </div>  
 </div>
 			
 			
 			
-		<!--	<div data-role="popup" id="chinab">
+		<!--	<div data-role="popup" id="addTask">
 				<p>This is a completely basic popup, no options set.<p>
 			</div>
 			-->
