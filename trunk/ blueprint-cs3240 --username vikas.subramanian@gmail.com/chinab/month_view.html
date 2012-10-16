@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Month View</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<!-- from here -->
+	    <link rel="stylesheet" href="css/moomonth.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="js/mootools.v1.11.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/moodate.v0.10.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/moomonth.v0.10.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+	<!-- till here added -->
+	<!--alert( "Project still early in development, has not been testing in all browsers. Enjoy!" );-->
+      window.addEvent('domready', function() {
+        <!--calendar = new Calendar.Mini("calendar", "", 300, 200, false);-->
+        calendar = new MooMonth.App("calendar");
+      });
+    </script>
+</head> 
+<body> 
+
+<div data-role="page" id="month_view">
+
+	<div data-role="header">
+		<h1>Month View</h1>
+	</div><!-- /header -->
+		<!--	
+	<div data-role="content">	
+		<div data-role="navbar">
+			<ul>
+				<li><a href="a.html" class="ui-btn-active ui-state-persist">Monday</a></li>
+				<li><a href="b.html">Tuesday</a></li>
+				<li><a href="b.html">Wednesday</a></li>
+				<li><a href="b.html">Thursday</a></li>
+				<li><a href="b.html">Friday</a></li>
+			</ul>
+		</div><!-- /navbar -->		
+		<!--
+	<div class="ui-grid-a">
+		<div class="ui-block-a">Monday</div>
+		<div class="ui-block-b">Tuesday</div>
+		<div class="ui-block-c">Wednesday</div>
+		<div class="ui-block-a">Thursday</div>
+		<div class="ui-block-b">Friday</div>
+		<div class="ui-block-c">Saturday</div>
+		<div class="ui-block-c">Sunday</div>
+	</div><!-- /grid-b -->
+		
+		<div id="calendar"></div>
+		
+	</div><!-- /content -->
+	
+	<div data-role="footer"> 
+		<h4>Page Footer</h4>
+	</div> <!--/footer-->
+
+</div><!-- /page -->
+
+</body>
+</html>
