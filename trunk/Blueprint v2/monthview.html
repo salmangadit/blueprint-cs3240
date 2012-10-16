@@ -10,7 +10,7 @@
 	<script type='text/javascript' src='fullcalendar/jquery-ui-1.8.23.custom.min.js'></script>
 	<script type='text/javascript' src='fullcalendar/fullcalendar.js'></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-<script type='text/javascript'>
+	<script type='text/javascript'>
 
 	$(document).ready(function() {
 	
@@ -76,6 +76,28 @@
 	});
 
 </script>
+
+<script type='text/javascript'>
+
+$( document ).on( "pageinit", function() {
+    $( "#chinab" ).on({
+        popupbeforeposition: function() {
+            var maxHeight = $( window ).height() - 60 + "px";
+            $( "#chinab" ).css( "max-height", maxHeight );
+        }
+    });
+});
+
+$( "#popupPanel" ).on({
+    popupbeforeposition: function() {
+        var h = $( window ).height();
+
+        $( "#popupPanel" ).css( "height", h );
+    }
+});
+
+</script>
+
 <style type='text/css'>
 
 	body {
@@ -89,6 +111,22 @@
 		margin: 0 auto;
 		}
 
+	#popupPanel-popup {
+    right: 0 !important;
+    left: auto !important;
+	}
+
+	#popupPanel {
+		width: 200px;
+		border: 1px solid #000;
+		border-right: none;
+		background: rgba(0,0,0,.5);
+		margin: -1px 0;
+	}
+	#popupPanel .ui-btn {
+		margin: 2em 15px;
+	}
+		
 </style>
 </head> 
 <body> 
@@ -99,31 +137,11 @@
 		<div data-role="controlgroup" data-type="horizontal">
 			<div class="ui-btn-right">
 				<a href="index.html" data-icon="gear" data-role="button" data-theme="d">Settings</a>
-				<a href="#salman" data-icon="plus" data-role="button" data-theme="d">Add Task</a>
+				<a href="#chinab" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
 			</div>
-		</div><!-- /controlgroup -->
-	</div><!-- /header -->
-
-	<div data-role="content" id='calendar'>			
-	</div><!-- /content -->
-
-	<div data-role="footer" data-theme="b"> 
-		<div data-role="navbar">
-			<ul>
-				<li><a href="">Day View</a></li>
-				<li><a href="">Week View</a></li>
-				<li><a href="">Month View</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!--/footer-->
-</div><!-- /page -->
-
-
-<div data-role="page" id="salman">
-	<div data-role="header">
-		<h1>Add Tasks</h1>
-	</div><!-- /header -->
-
+			
+			
+<div data-role="popup" id="chinab">
     <div data-role="content">
         <form action="">
             <div data-role="fieldcontain">
@@ -185,10 +203,49 @@
         	</div>
         <input type="submit" value="Add task">
         </form>
-            </div>  
-    </div>
+    </div>  
 </div>
+			
+			
+			
+		<!--	<div data-role="popup" id="chinab">
+				<p>This is a completely basic popup, no options set.<p>
+			</div>
+			-->
+		</div><!-- /controlgroup -->
+	</div><!-- /header -->
 
+	
+	
+	
+	
+	
+	
+	<div data-role="content" id='calendar'>		
+			
+		<a href="#popupPanel" data-rel="popup" data-transition="slide" data-position-to="window" data-role="button">Open panel</a>
+				
+		<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
+
+		<button data-theme="a" data-icon="back" data-mini="true">Day View</button>
+		<button data-theme="a" data-icon="grid" data-mini="true">Week View</button>
+		<button data-theme="a" data-icon="search" data-mini="true">Month View</button>
+		 
+		</div>
+	
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-theme="b"> 
+		<div data-role="navbar">
+			<ul>
+				<li><a href="">Day View</a></li>
+				<li><a href="">Week View</a></li>
+				<li><a href="">Month View</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div> <!--/footer-->
+</div><!-- /page -->
 
 </body>
 </html>
