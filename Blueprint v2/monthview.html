@@ -25,6 +25,18 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			
+			eventClick: function(calEvent, jsEvent, view) {
+        
+		
+		console.log(calEvent.title);
+        // change the border color just for fun
+        $(this).css('border-color', 'red');
+		$('#task_desc').html(calEvent.title);
+		$('#popupPanel').popup("open");
+
+    }, 
+			
 			editable: true,
 			events: [
 				{
@@ -88,12 +100,9 @@ $( document ).on( "pageinit", function() {
     });
 });
 
-$( "#popupPanel" ).on({
-    popupbeforeposition: function() {
-        var h = $( window ).height();
 
-        $( "#popupPanel" ).css( "height", h );
-    }
+$('#calendar').fullCalendar({
+    
 });
 
 </script>
@@ -227,7 +236,7 @@ $( "#popupPanel" ).on({
 				
 		<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
 
-		<button data-theme="a" data-icon="back" data-mini="true">Day View</button>
+		<div id="task_desc"></div>
 		<button data-theme="a" data-icon="grid" data-mini="true">Week View</button>
 		<button data-theme="a" data-icon="search" data-mini="true">Month View</button>
 		 
