@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Blueprint</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+</head> 
+<body> 
+
+<div data-role="page">
+
+	<div data-role="header">
+		<h1>Add Tasks</h1>
+	</div><!-- /header -->
+
+    <div data-role="content">
+        <form action="">
+            <div data-role="fieldcontain">
+                    <label for="description">
+                        Description
+                    </label>
+                    <input name="description" id="description" placeholder="Enter task description"
+                    value="" type="text">
+            </div>
+            <div data-role="fieldcontain">
+                    <label for="textinput2">
+                        Deadline
+                    </label>
+                    <input name="" id="textinput2" placeholder="" value="" type="date">
+            </div>
+            <div data-role="fieldcontain" class="ui-grid-b ui-br">
+            	<div class="ui-block-a">
+                    <label for="textinput3">
+                        Task Length
+                    </label>
+                </div>
+                <div class="ui-block-b">
+                    <input name="" id="textinput3" placeholder="" value="" type="text">
+                </div>
+                <div class="ui-block-c">
+                    <label for="selectmenu3">
+                </label>
+                <select name="">
+                    <option value="option1">
+                        minutes
+                    </option>
+                    <option value="value">
+                        hours
+                    </option>
+                    <option value="value">
+                        days
+                    </option>
+                </select>
+            	</div>
+            </div>
+            <div data-role="fieldcontain">
+            	<fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>
+                        Priority:
+                    </legend>
+                    <input id="radio2" name="" value="radio1" type="radio" checked="checked">
+                    <label for="radio2">
+                        	High
+                    </label>
+                    <input id="radio3" name="" value="radio3" type="radio">
+                    <label for="radio3">
+                    	Medium
+                    </label>
+                    <input id="radio4" name="" value="radio4" type="radio">
+                    <label for="radio4">
+                        Low
+                    </label>
+                </fieldset>
+        	</div>
+        <input type="submit" value="Add task">
+        </form>
+            </div>  
+    </div>
+</div>		
+
+</body>
+</html>
