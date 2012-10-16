@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MooMonth (v0.10) with MooTools</title>
+    <link rel="stylesheet" href="../code/moomonth.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <script src="mootools.v1.11.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../code/moodate.v0.10.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../code/moomonth.v0.10.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+      //alert( "Project still early in development, has not been testing in all browsers. Enjoy!" );
+      window.addEvent('domready', function() {
+        //calendar = new Calendar.Mini("calendar", "", 300, 200, false);
+        calendar = new MooMonth.App("calendar");
+      });
+    </script>
+  </head>
+  <body>
+    <div id="calendar"></div>
+  </body>
+</html>

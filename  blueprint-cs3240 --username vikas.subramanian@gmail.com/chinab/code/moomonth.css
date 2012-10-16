@@ -1,0 +1,96 @@
+body {font: 10px/1em Arial; margin: 0; color: #444; background: #222;}
+a {text-decoration: none;}
+a:hover {color: #69f;}
+p {margin: 0.2em 0;}
+
+/* Border Top */
+.calendar-weeks-label, .calendar-weeks-container, .calendar-day-labels, .calendar-days-container {border-top: 1px solid #999;}
+/* Border Right */
+.calendar-weeks-container .week, .calendar-day-labels .day, .calendar-days-container .day  {border-right: 1px solid #999;}
+/* Border Bottom */
+.calendar-weeks-container .week, .calendar-days-container .week {border-bottom: 1px solid #999;}
+/* Border Left */
+.calendar-weeks-label, .calendar-weeks-container, .calendar-day-labels, .calendar-days-container  {border-left: 1px solid #999;}
+
+/* Height 100% */
+.calendar-weeks, .calendar-days-container .day {height: 100%;}
+/* Width 100% */
+.calendar-days-container .week {width: 100%;}
+
+/* Position Relative */
+.calendar-weeks-container, .calendar-days-container, .calendar-day-labels {position: relative;}
+/* Position Absolute */
+.calendar-weeks-container .week, .calendar-day-labels .day {position: absolute;}
+
+/* Overflow Hidden */
+.calendar-wrapper,
+.calendar-main,
+.calendar-weeks,
+.calendar-weeks-container,
+.calendar-weeks-container .week,
+.calendar-days,
+.calendar-day-labels .day,
+.calendar-days-container,
+.calendar-days-container .day {overflow:hidden;}
+
+
+
+.calendar {}
+.calendar-wrapper {font-size: 1.2em; margin: 8px 12px;}
+  /* App Only */
+  .calendar.app .calendar-wrapper {position: absolute;}
+
+  /* Mini-state. */
+  .calendar.app .calendar-wrapper.mini {cursor: pointer;}
+  .calendar.app .calendar-wrapper.mini .controls {display: none;}
+  .calendar.app .calendar-wrapper.mini .calendar-header {}
+  .calendar.app .calendar-wrapper.mini .calendar-month-label {color: #69f;}
+  .calendar.app .calendar-wrapper.mini:hover .calendar-month-label {color: #fff !important;}
+
+.calendar-header {clear: both; overflow: hidden;}
+.calendar-month-label {font-size: 1.8em; line-height: 40px; padding: 0 10px; margin: 0; color: #fff;}
+.calendar-month-label a {color :#69f;}
+.calendar-month-label a:hover {color: #ffc;}
+.calendar-month-label .labels {float: left;}
+.calendar-month-label .labels a {color: inherit;}
+.calendar-month-label .labels a:hover {text-decoration: underline; color: #fcc;}
+.calendar-month-label .controls {float: right;}
+
+.calendar-main {color: #999;}
+
+.calendar-weeks {float: left;}
+
+.calendar-weeks-label {font-size: 10px; line-height: 14px; color: #999; text-align: center; background: transparent; border-color: transparent;}
+.calendar-weeks-container {text-align: center; background: transparent; border-color: transparent; }
+.calendar-weeks-container .week {cursor: pointer; border-color: #222; background: #444;}
+.calendar-weeks-container .week:hover {background: transparent;}
+
+.calendar-days {float:left;}
+
+.calendar-day-labels {text-align: center; background: transparent; border-color: transparent;}
+.calendar-day-labels .day {line-height: 14px; color: #999; border-color: transparent;}
+
+.calendar-days-container {float: left; background: #ccc; border-color: #222;}
+
+.calendar-days-container .week {position: absolute; width: 100%; z-index: 1; border-color: #222;}
+.calendar-days-container .day {position: absolute; z-index: 1; cursor: pointer; background: #fff; border-color: #222;}
+
+.calendar-days-container .day .inner-day {}
+.calendar-days-container .day .day-label {text-align: left; line-height: 1.3em; padding: 0 4px; background: #eee; border-bottom: 1px solid #ccc;}
+.calendar-days-container .day .day-content {padding: 0 5px; line-height: 1.2em;}
+
+.calendar-days-container .day .day-label .close {float: right; padding: 0 2px; color: #f77; font-weight: bold; display: none;}
+.calendar-days-container .day .day-label .close:hover {background: #f77; color: #fff;}
+  
+.calendar-days-container .day.last-month {background: #eee; color: #999;}
+.calendar-days-container .day.last-month .day-label {background: #ddd; border-color: #ccc;}
+.calendar-days-container .day.this-month {background:#fff; color: #666;}
+.calendar-days-container .day.this-month .day-label {background: #ffc; border-color: #cca;}
+.calendar-days-container .day.next-month {background: #eee; color: #999;}
+.calendar-days-container .day.next-month .day-label {background: #ddd;  border-color: #ccc}
+
+.calendar-days-container .day.selected {background: #eee; color: #999;}
+.calendar-days-container .day.selected .day-label {background: #69f;  border-color: #ccc}
+
+.calendar-days-container .day:hover,
+.calendar-days-container .day.expanded:hover {background: #eee;}
