@@ -13,7 +13,6 @@
 	<script type='text/javascript'>
 
 	$(document).ready(function() {
-	
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
@@ -84,8 +83,21 @@
 				}
 			]
 		});
-		
+		$('.fc-header-right').css("display","none");
+		showMonthView();
 	});
+
+	function showWeekView(){
+		$('#calendar').fullCalendar('changeView', "agendaWeek");
+	};
+
+	function showDayView(){
+		$('#calendar').fullCalendar('changeView', "agendaDay");
+	};
+
+	function showMonthView(){
+		$('#calendar').fullCalendar('changeView', "month");
+	};
 
 </script>
 
@@ -223,12 +235,6 @@ $('#calendar').fullCalendar({
 			-->
 		</div><!-- /controlgroup -->
 	</div><!-- /header -->
-
-	
-	
-	
-	
-	
 	
 	<div data-role="content" id='calendar'>		
 			
@@ -248,9 +254,9 @@ $('#calendar').fullCalendar({
 	<div data-role="footer" data-theme="b"> 
 		<div data-role="navbar">
 			<ul>
-				<li><a href="">Day View</a></li>
-				<li><a href="">Week View</a></li>
-				<li><a href="">Month View</a></li>
+				<li><a href="" onclick="showDayView()">Day View</a></li>
+				<li><a href="" onclick="showWeekView()">Week View</a></li>
+				<li><a href="" onclick="showMonthView()">Month View</a></li>
 			</ul>
 		</div><!-- /navbar -->
 	</div> <!--/footer-->
