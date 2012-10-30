@@ -18,6 +18,26 @@
 	
 	
 	$(document).ready(function() {
+		
+		if(($(window).width() < 480) || ($(window).height() < 480)){
+
+			 $('#imgBlueprint').css("display", "none");
+			 $('#title_Blueprint').css("font-size", "24px");
+		}
+		
+		$(window).resize(function() {
+			if(($(window).width() < 480) || ($(window).height() < 480)){
+
+		 $('#imgBlueprint').css("display", "none");
+		 $('#title_Blueprint').css("font-size", "24px");
+		}
+		
+		else{
+		 $('#imgBlueprint').css("display", "block");
+		 $('#title_Blueprint').css("font-size", "58px");
+		}
+});
+		
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
@@ -124,7 +144,24 @@ $( document ).on( "pageinit", function() {
             $( "#addTask" ).css( "max-height", maxHeight );
         }
     });
-
+	
+	$( document ).on( "pageinit", function() {
+    $( "#settings" ).on({
+        popupbeforeposition: function() {
+            var maxHeight = $( window ).height() - 60 + "px";
+            $( "#settings" ).css( "max-height", maxHeight );
+        }
+    });
+	
+	$(window).resize(function() {
+ // $('body').prepend('<div>' + $(window).width() + '</div>');
+			if($(window).width() < 480){
+		 $('#imgBlueprint').css("display", "none");
+		}
+		console.log("reseting screen");
+});
+	
+	
 </script>
 
 <style type='text/css'>
@@ -148,7 +185,7 @@ $( document ).on( "pageinit", function() {
 		width: 200px;
 		border: 1px solid #000;
 		border-right: none;
-		background: rgba(0,0,0,.5);
+		background: rgba(255,255,255,1);
 		margin: -1px 0;
 	}
 	#popupPanel .ui-btn {
@@ -173,37 +210,76 @@ $( document ).on( "pageinit", function() {
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	}	
 		
-	
 	#chi_container div, #chi_container img{
 	top: 0;
 	left: 0;
 	position: absolute;
 	width: 35%;
 	height: 110%;
+	} 
+	<!--
+	#chi_container div {
+ width: 40%;
+ white-space: nowrap;
+ overflow: visible;
+}
+	#chi_container img {
+ width: 50%;
+ padding: 0;
+ margin: 0; 
+} -->
+	
+	#imgBlueprint {
+	top: 0;
+	left: 0;
+	position: absolute;
+	max-width: 12.5%;
+	height: auto;
 	}
+
+@media \0screen {
+  img { 
+  	width: auto; /* for ie 8 */
+  }
+}
+	
 	
 </style>
 </head> 
 <body> 
 
-<div data-role="popup" id="popup_img">
+<!--<div data-role="popup" id="popup_img">
 	<img src="blueprint_logo.png" alt="blueprint"></img>
 </div>
-
+-->
 
 <div data-role="page">
 	<div data-role="header" data-theme="b">
-		<div id = "chi_container">
-		<div id="chi_image"><img src="blueprint_logo.png" alt="BLUEPRINT"></div>
-		</div>
-		<p style="font-size: 58px; margin-top: 10px; margin-bottom: 0px; margin-left: 10px; margin-right: 10px; text-align: center; font-family: 'Reenie Beanie', cursive;">
+		<!--<div id = "chi_container">
+			<div><img src="blueprint_logo.png" style="min-width: 50px; min-height: 20px" alt="BLUEPRINT" /></div>
+		</div>-->
+		
+		<figure>
+			<img id="imgBlueprint" src="blueprint_logo.png" style="min-width: 80px" alt="BLUEPRINT">
+		</figure>
+		<br />
+		
+		<p id="title_Blueprint" style="font-size: 58px; margin-top: 10px; margin-bottom: 0px; margin-left: 10px; margin-right: 10px; text-align: center; font-family: 'Reenie Beanie', cursive;">
 		Welcome to your Blueprint</p>
 		<div data-role="controlgroup" data-type="horizontal">
 			<div class="ui-btn-right">
-				<a href="index.html" data-icon="gear" data-role="button" data-theme="d">Settings</a>
+				<a href="#settings" data-icon="gear" data-role="button" data-rel="popup" data-theme="d">Settings</a>
 				<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
 			</div>
 			
+<div data-role="popup" id="settings"> 
+	<div data-role="content">
+		<form action="">
+        <a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitSettings()">Update Settings</a>
+        </form>
+	</div>
+</div> <!-- closing of settings popup -->
+
 			
 <div data-role="popup" id="addTask">
     <div data-role="content">
@@ -281,7 +357,7 @@ $( document ).on( "pageinit", function() {
         <a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitTask()">Add Task</a>
         </form>
     </div>  
-</div>
+</div>	<!-- closing of add task popup -->
 			
 			
 			
@@ -295,14 +371,12 @@ $( document ).on( "pageinit", function() {
 	<div data-role="content" id='calendar'>		
 						
 		<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
-
-		<div data-role = "header" id="title"></div>
-		<div id="task_desc"></div>
-		<div id="start"></div>
-		<div id="end"></div>
-		<div id="url"></div>
-		<div id="progressbar">  </div>
-		 
+			<div data-role = "header" id="title"></div>
+			<div id="task_desc"></div>
+			<div id="start"></div>
+			<div id="end"></div>
+			<div id="url"></div>
+			<div id="progressbar">  </div>
 		</div>
 	
 	</div><!-- /content -->
