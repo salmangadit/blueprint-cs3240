@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html> 
 <head> 
 	<title>Blueprint</title> 
@@ -15,8 +15,6 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	<script src="jquery.ui.touch-punch.min.js"></script>
 	<script type='text/javascript'>
-	
-	
 	$(document).ready(function() {
 		
 		if(($(window).width() < 480) || ($(window).height() < 480)){
@@ -165,6 +163,33 @@ $( document ).on( "pageinit", function() {
 </script>
 
 <style type='text/css'>
+	a.fb-button {
+    color: #FFFFFF;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.fb-button {
+    background: #5F78AB;
+    background-image: url('http://static.ak.fbcdn.net/rsrc.php/v2/yf/r/S-DbSHszr4D.png');  /*COPY TO YOUR OWN IMAGE STORE*/
+    background-repeat: no-repeat;
+    background-position: -1px -81px;
+    border-top: 1px solid #29447E;
+    border-right: 1px solid #29447E;
+    border-bottom: 1px solid #1A356E;
+    border-left: 1px solid #29447E;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
+    cursor: pointer;
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    height: 23px;
+    line-height: 23px;
+    padding: 0px 5px 0px 30px;
+    text-align: left;
+}
 	body {
 		margin-top: 40px;
 		text-align: center;
@@ -247,11 +272,73 @@ $( document ).on( "pageinit", function() {
 </style>
 </head> 
 <body> 
+		<div id="fb-root"></div>
+	<script>
+  // Additional JS functions here
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '478157508874436', // App ID
+      channelUrl : 'http://bweebee.com/blueprint/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
 
-<!--<div data-role="popup" id="popup_img">
-	<img src="blueprint_logo.png" alt="blueprint"></img>
-</div>
+    // Additional init code here
+    FB.getLoginStatus(function(response) {
+	  if (response.status === 'connected') {
+	    // connected
+	    console.log("connected");
+	    testAPI();
+	  } else if (response.status === 'not_authorized') {
+	    // not_authorized
+	    //$.mobile.changePage('#dialog', 'pop', true, true);
+	    console.log("not_authorized");
+	    window.location="login.html";
+	  } else {
+	    // not_logged_in
+	    //$.mobile.changePage('#dialog', 'pop', true, true);
+	    console.log("not logged in");
+	    window.location="login.html";
+	  }
+	 });
+  	};
 -->
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+
+  function login() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            // connected
+            testAPI();
+        } else {
+            // cancelled
+        }
+    });
+  }
+
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+        console.log('Good to see you, ' + response.name + '.');
+    });
+	}
+
+	function logout(){
+	FB.logout(function(response) {
+  FB.Auth.setAuthResponse(null, 'unknown');
+	});
+	window.location="login.html";
+	}
+</script>
 
 <div data-role="page">
 	<div data-role="header" data-theme="b">
@@ -270,6 +357,7 @@ $( document ).on( "pageinit", function() {
 			<div class="ui-btn-right">
 				<a href="#settings" data-icon="gear" data-role="button" data-rel="popup" data-theme="d">Settings</a>
 				<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
+				<a href="index.html" data-icon="refresh" data-role="button" data-theme="d" onclick="FB.logout()">Logout</a>
 			</div>
 			
 <div data-role="popup" id="settings"> 
