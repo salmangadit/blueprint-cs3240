@@ -161,7 +161,7 @@ $( document ).on( "pageinit", function() {
 	
 	
 </script>
-
+<script language="javascript" src="db-sai.js"></script>
 <style type='text/css'>
 	a.fb-button {
     color: #FFFFFF;
@@ -413,8 +413,32 @@ $( document ).on( "pageinit", function() {
         	<script type='text/javascript'>
     
     function submitTask(){
+    
+    	var taskToAdd = {};
+    	
+    	taskToAdd.description = $("#description").val();
+    	taskToAdd.start = $("#startdate").val();
+    	taskToAdd.end = $("#deadline").val();
+    	taskToAdd.priority = function(){
+    			if($("#high").attr("checked")=="checked")
+    			{
+    				return 'high';
+    			}
+    			else if($("#medium").attr("checked")=="checked")
+    			{
+    				return 'medium';
+    			}
+    			else($("#low").attr("checked")=="checked")
+    			{
+    				return 'low';
+    			}
+    		}();
+    	
+    	var taskId = TaskDB.addTask(taskToAdd);
+    
     	var newTask=[
     	{
+    		id : taskId,
     		title : $("#description").val(),
     		start : new Date($("#startdate").val()),
     		end : new Date($("#deadline").val()),
