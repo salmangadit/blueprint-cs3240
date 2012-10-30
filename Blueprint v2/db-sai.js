@@ -84,11 +84,39 @@ var db = prepareDatabase();
                 });
         }
         
+        function updateTaskInLocalStorage(task){
+        	
+        	var priority;
+        	
+        	if(task.priority === "high")
+			{
+				priority = 0;
+			}
+			else if(task.priority === "medium")
+			{
+				priority = 1;
+			}
+			else if(task.priority === "low")
+			{
+				priority = 2;
+			}	
+
+        
+        db.transaction( function(t) {
+                    t.executeSql(' UPDATE tasks SET description = ?, start = ?, end = ?, priority = ? WHERE id = ?',
+                        [ task.description, task.start, task.end, priority, task.id ]
+                    );
+                }, function(t, e){ alert('Update row: ' + e.message); }, function() {
+                    
+                });
+        }
+        
         var TaskDB = {};
         
         TaskDB.addTask =  addTaskToLocalStorage;
         TaskDB.getTask =  getTaskFromLocalStorage;
         TaskDB.deleteTask = deleteTaskFromLocalStorage;
+        TaskDB.updateTask = updateTaskInLocalStorage;
         
         
 //end DB
