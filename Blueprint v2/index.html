@@ -141,7 +141,7 @@ $( document ).on( "pageinit", function() {
             var maxHeight = $( window ).height() - 60 + "px";
             $( "#addTask" ).css( "max-height", maxHeight );
         }
-    });
+    })});
 	
 	$( document ).on( "pageinit", function() {
     $( "#settings" ).on({
@@ -149,7 +149,7 @@ $( document ).on( "pageinit", function() {
             var maxHeight = $( window ).height() - 60 + "px";
             $( "#settings" ).css( "max-height", maxHeight );
         }
-    });
+    })});
 	
 	$(window).resize(function() {
  // $('body').prepend('<div>' + $(window).width() + '</div>');
@@ -428,7 +428,7 @@ $( document ).on( "pageinit", function() {
     			{
     				return 'medium';
     			}
-    			else($("#low").attr("checked")=="checked")
+    			else
     			{
     				return 'low';
     			}
@@ -453,7 +453,7 @@ $( document ).on( "pageinit", function() {
     				console.log("medium checked");
     				return '#300000';
     			}
-    			else($("#low").attr("checked")=="checked")
+    			else
     			{
     				console.log("low checked");
     				return '#304050';
