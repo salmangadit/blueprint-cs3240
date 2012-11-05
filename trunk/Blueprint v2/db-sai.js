@@ -1,8 +1,16 @@
 //start DB
 
+/** Local storage API for Blueprint
+  * @author saiaspire
+ */
+
+
 var index = 0;
+
+// db is our database object
 var db = prepareDatabase();
 
+		// sql string to create database
         var createSQL = 'CREATE TABLE IF NOT EXISTS tasks (' +
                 'id INTEGER PRIMARY KEY,' +
                 'description TEXT,' +
@@ -30,14 +38,32 @@ var db = prepareDatabase();
             } else {
                 var db = odb( 'blueprint', '1.0', 'Task Database', 10 * 1024 * 1024 );
                 db.transaction(function (t) {
-                    t.executeSql( createSQL, [], function(t, r) {}, function(t, e) {
+                    t.executeSql( createSQL, [], function(t, r) {
+                    	setIndex();
+                    }, function(t, e) {
                         alert('create table: ' + e.message);
                     });
                 });
                 return db;
             }
         }
-
+        
+        // set index based on last row in DB
+        function setIndex() {
+            db.readTransaction(function(t) {
+                t.executeSql('SELECT * FROM tasks ORDER BY id ASC', [], function(t, r) {
+					if(r.rows.length > 0)
+					{
+						index = r.rows.item(r.rows.length - 1).id;
+                    }
+                    console.log("DB Index is " + index);
+                });
+            });
+        }
+		
+		// to add task to local storage
+		// @param taskData is an object with following expected parameters 
+		//        priority[high,medium,low], description[text], start and end[date]
 		function addTaskToLocalStorage(taskData) {
 			
 			var priority;
@@ -68,6 +94,10 @@ var db = prepareDatabase();
 		
 		}
 		
+		// gets task with specific id
+		// @param id of task
+		// @param callbackTask, Callback function that 
+		// gets the row with id as parameter
 		function getTaskFromLocalStorage(id, callbackTask) {
 			
             db.readTransaction(function(t) {
@@ -77,6 +107,20 @@ var db = prepareDatabase();
             });
         }
         
+        // gets all tasks from DB with highest priority first
+        // @param callbackTask, Callback function that
+        // gets the rows as parameter
+        function getAllTasks(callbackTask) {
+			
+            db.readTransaction(function(t) {
+                t.executeSql('SELECT * FROM tasks ORDER BY id ASC', [], function(t, r) {
+                    callbackTask(r.rows);
+                });
+            });
+        }
+        
+        // deletes task with specific id
+        // @param id to delete
     	function deleteTaskFromLocalStorage(id) {
     	
                 db.transaction(function(t) {
@@ -84,6 +128,8 @@ var db = prepareDatabase();
                 });
         }
         
+        // updates task object
+        // @param task object with updated data
         function updateTaskInLocalStorage(task){
         	
         	var priority;
@@ -111,12 +157,15 @@ var db = prepareDatabase();
                 });
         }
         
+        // TaskDB is the global object that you can use 
+        // and has the methods as below
         var TaskDB = {};
         
         TaskDB.addTask =  addTaskToLocalStorage;
         TaskDB.getTask =  getTaskFromLocalStorage;
         TaskDB.deleteTask = deleteTaskFromLocalStorage;
         TaskDB.updateTask = updateTaskInLocalStorage;
+        TaskDB.getAllTasks = getAllTasks;
         
         
 //end DB
