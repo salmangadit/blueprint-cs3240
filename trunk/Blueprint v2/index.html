@@ -3,9 +3,10 @@
 <head> 
 	<title>Blueprint</title> 
 	<link href="http://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet" type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.css' />
-    <link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.print.css' media='print' />
+	<link rel='stylesheet' type='text/css' href='fullcalendar/fullcalendar.print.css' media='print' />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -19,32 +20,32 @@
 		
 		if(($(window).width() < 480) || ($(window).height() < 480)){
 
-			 $('#imgBlueprint').css("display", "none");
-			 $('#title_Blueprint').css("font-size", "24px");
+			$('#imgBlueprint').css("display", "none");
+			$('#title_Blueprint').css("font-size", "24px");
 		}
 		
 		$(window).resize(function() {
 			if(($(window).width() < 480) || ($(window).height() < 480)){
 
-		 $('#imgBlueprint').css("display", "none");
-		 $('#title_Blueprint').css("font-size", "24px");
-		}
-		
-		else{
-		 $('#imgBlueprint').css("display", "block");
-		 $('#title_Blueprint').css("font-size", "58px");
-		}
-});
+				$('#imgBlueprint').css("display", "none");
+				$('#title_Blueprint').css("font-size", "24px");
+			}
+
+			else{
+				$('#imgBlueprint').css("display", "block");
+				$('#title_Blueprint').css("font-size", "58px");
+			}
+		});
 		
 		var date = new Date();
 		var d = date.getDate();
 		var m = date.getMonth();
 		var y = date.getFullYear();
-  
-			var eventsData = [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1),
+
+		var eventsData = [
+		{
+			title: 'All Day Event',
+			start: new Date(y, m, 1),
 					//color: '#378006'
 				},
 				{
@@ -86,237 +87,252 @@
 					start: new Date(y, m, 28),
 					end: new Date(y, m, 29),
 				}
-			];
-		
-		$('#calendar').fullCalendar({
-				header: {
-					left: 'prev,next today',
-					center: 'title',
-					right: 'month,agendaWeek,agendaDay'
-				},
-			
-				eventClick: function(calEvent, jsEvent, view) {
-        
-		
-				console.log(calEvent.title);
+				];
+
+				$('#calendar').fullCalendar({
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
+
+					eventClick: function(calEvent, jsEvent, view) {
+
+
+						console.log(calEvent.title);
         		// change the border color just for fun
         		$('#popupPanel').popup("open");
         		$(this).css('border-color', 'red');
-       		 $('#title').html("Task Info");
-				$('#task_desc').html(calEvent.title);
-				$('#start').html(calEvent.start.toDateString());
-				$('#end').html(calEvent.end.toDateString());
-		
-				$('#url').html(calEvent.url);
-				$( "#progressbar" ).progressbar({ value :41});
-    	}, 
-			
-			editable: true,
-			events: eventsData
-		});
+        		$('#title').html("Task Info");
+        		$('#task_desc').html(calEvent.title);
+        		$('#start').html(calEvent.start.toDateString());
+        		$('#end').html(calEvent.end.toDateString());
 
-		$('.fc-header-right').css("display","none");
-		showMonthView();
-	});
+        		$('#url').html(calEvent.url);
+        		$( "#progressbar" ).progressbar({ value :41});
+        	}, 
 
-	function showWeekView(){
-		$('#calendar').fullCalendar('changeView', "agendaWeek");
-	};
+        	editable: true,
+        	events: eventsData
+        });
 
-	function showDayView(){
-		$('#calendar').fullCalendar('changeView', "agendaDay");
-	};
+				$('.fc-header-right').css("display","none");
+				showMonthView();
+			});
 
-	function showMonthView(){
-		$('#calendar').fullCalendar('changeView', "month");
-	};
+function showWeekView(){
+	$('#calendar').fullCalendar('changeView', "agendaWeek");
+};
+
+function showDayView(){
+	$('#calendar').fullCalendar('changeView', "agendaDay");
+};
+
+function showMonthView(){
+	$('#calendar').fullCalendar('changeView', "month");
+};
 
 </script>
 
 <script type='text/javascript'>
 
 $( document ).on( "pageinit", function() {
-    $( "#addTask" ).on({
-        popupbeforeposition: function() {
-            var maxHeight = $( window ).height() - 60 + "px";
-            $( "#addTask" ).css( "max-height", maxHeight );
-        }
-    })});
+	$( "#addTask" ).on({
+		popupbeforeposition: function() {
+			var maxHeight = $( window ).height() - 60 + "px";
+			$( "#addTask" ).css( "max-height", maxHeight );
+		}
+	})});
 	
 	$( document ).on( "pageinit", function() {
-    $( "#settings" ).on({
-        popupbeforeposition: function() {
-            var maxHeight = $( window ).height() - 60 + "px";
-            $( "#settings" ).css( "max-height", maxHeight );
-        }
-    })});
-	
-	$(window).resize(function() {
+		$( "#settings" ).on({
+			popupbeforeposition: function() {
+				var maxHeight = $( window ).height() - 60 + "px";
+				$( "#settings" ).css( "max-height", maxHeight );
+			}
+		})});
+
+		$(window).resize(function() {
  // $('body').prepend('<div>' + $(window).width() + '</div>');
-			if($(window).width() < 480){
-		 $('#imgBlueprint').css("display", "none");
-		}
-		console.log("reseting screen");
+ if($(window).width() < 480){
+ 	$('#imgBlueprint').css("display", "none");
+ }
+ console.log("reseting screen");
 });
-	
-	
-</script>
-<script language="javascript" src="db-sai.js"></script>
-<style type='text/css'>
-	a.fb-button {
-    color: #FFFFFF;
-    display: inline-block;
-    text-decoration: none;
-}
 
-.fb-button {
-    background: #5F78AB;
-    background-image: url('http://static.ak.fbcdn.net/rsrc.php/v2/yf/r/S-DbSHszr4D.png');  /*COPY TO YOUR OWN IMAGE STORE*/
-    background-repeat: no-repeat;
-    background-position: -1px -81px;
-    border-top: 1px solid #29447E;
-    border-right: 1px solid #29447E;
-    border-bottom: 1px solid #1A356E;
-    border-left: 1px solid #29447E;
-    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
-    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
-    cursor: pointer;
-    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    height: 23px;
-    line-height: 23px;
-    padding: 0px 5px 0px 30px;
-    text-align: left;
-}
-	body {
-		margin-top: 40px;
-		text-align: center;
-		font-size: 14px;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+
+		</script>
+		<script language="javascript" src="db-sai.js"></script>
+		<style type='text/css'>
+
+		.center-wrapper{
+			text-align: center;
 		}
 
-	#calendar {
-		margin: 0 auto;
+		.center-wrapper * {
+			margin: 0 auto;
 		}
 
-	#popupPanel-popup {
-    right: 0 !important;
-    left: auto !important;
-	}
+		#bg1 {
+			opacity:0.8;
+			max-width: 100%;
+			height: auto;
+		}
 
-	#popupPanel {
-		width: 200px;
-		border: 1px solid #000;
-		border-right: none;
-		background: rgba(255,255,255,1);
-		margin: -1px 0;
-	}
-	#popupPanel .ui-btn {
-		margin: 2em 15px;
-	}
+		a.fb-button {
+			color: #FFFFFF;
+			display: inline-block;
+			text-decoration: none;
+		}
 
-	#popupPanel #task_desc, #start, #end
-	{
-	 margin: 1em 10px;
-	text-align: center;
-		color: #FFFFFF;
-		font-size: 14px;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-	}
+		.fb-button {
+			background: #5F78AB;
+			background-image: url('http://static.ak.fbcdn.net/rsrc.php/v2/yf/r/S-DbSHszr4D.png');  /*COPY TO YOUR OWN IMAGE STORE*/
+			background-repeat: no-repeat;
+			background-position: -1px -81px;
+			border-top: 1px solid #29447E;
+			border-right: 1px solid #29447E;
+			border-bottom: 1px solid #1A356E;
+			border-left: 1px solid #29447E;
+			-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
+			-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8a9cc2;
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1), inset 0 1px 0 #8A9CC2;
+			cursor: pointer;
+			font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+			font-size: 13px;
+			font-weight: bold;
+			height: 23px;
+			line-height: 23px;
+			padding: 0px 5px 0px 30px;
+			text-align: left;
+		}
 
-	#popupPanel #title
-	{
-	 margin: 2em 15px	;
-	text-align: center;
-		color: #FFFFFF;
-		font-size: 18px;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-	}	
+		body {
+			margin-top: 40px;
+			text-align: center;
+			font-size: 14px;
+			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+		#calendar {
+			margin: 0 auto;
+		}
+
+		#popupPanel-popup {
+			right: 0 !important;
+			left: auto !important;
+		}
+
+		#popupPanel {
+			width: 200px;
+			border: 1px solid #000;
+			border-right: none;
+			background: rgba(255,255,255,1);
+			margin: -1px 0;
+		}
+		#popupPanel .ui-btn {
+			margin: 2em 15px;
+		}
+
+		#popupPanel #task_desc, #start, #end
+		{
+			margin: 1em 10px;
+			text-align: center;
+			color: #FFFFFF;
+			font-size: 14px;
+			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+		#popupPanel #title
+		{
+			margin: 2em 15px;
+			text-align: center;
+			color: #FFFFFF;
+			font-size: 18px;
+			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}	
 		
-	#chi_container div, #chi_container img{
-	top: 0;
-	left: 0;
-	position: absolute;
-	width: 35%;
-	height: 110%;
-	} 
-	<!--
-	#chi_container div {
- width: 40%;
- white-space: nowrap;
- overflow: visible;
-}
-	#chi_container img {
- width: 50%;
- padding: 0;
- margin: 0; 
-} -->
-	
-	#imgBlueprint {
-	top: 0;
-	left: 0;
-	position: absolute;
-	max-width: 12.5%;
-	height: auto;
-	}
+		#chi_container div, #chi_container img{
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 35%;
+			height: 110%;
+		} 
+		<!--
+		#chi_container div {
+			width: 40%;
+			white-space: nowrap;
+			overflow: visible;
+		}
+		#chi_container img {
+			width: 50%;
+			padding: 0;
+			margin: 0; 
+			} -->
 
-@media \0screen {
-  img { 
-  	width: auto; /* for ie 8 */
-  }
-}
-	
-	
-</style>
-</head> 
-<body> 
-		<div id="fb-root"></div>
-	<script>
+			#imgBlueprint {
+				top: 0;
+				left: 0;
+				position: absolute;
+				max-width: 12.5%;
+				height: auto;
+			}
+
+			@media \0screen {
+				img { 
+					width: auto; /* for ie 8 */
+				}
+			}
+
+
+			</style>
+		</head> 
+		<body> 
+			<div id="fb-root"></div>
+			<script>
   // Additional JS functions here
   window.fbAsyncInit = function() {
-    FB.init({
+  	FB.init({
       appId      : '478157508874436', // App ID
       channelUrl : 'http://bweebee.com/blueprint/channel.html', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML
-    });
+  });
 
     // Additional init code here
     FB.getLoginStatus(function(response) {
-	  if (response.status === 'connected') {
+    	if (response.status === 'connected') {
 	    // connected
 	    console.log("connected");
 	    testAPI();
-	  } else if (response.status === 'not_authorized') {
+	} else if (response.status === 'not_authorized') {
 	    // not_authorized
 	    //$.mobile.changePage('#dialog', 'pop', true, true);
 	    console.log("not_authorized");
-	    window.location="login.html";
-	  } else {
+	    window.location="#page2";
+	} else {
 	    // not_logged_in
 	    //$.mobile.changePage('#dialog', 'pop', true, true);
 	    console.log("not logged in");
-	    window.location="login.html";
-	  }
-	 });
-  	};
--->
+	    window.location="#page2";
+	}
+});
+};
 
   // Load the SDK Asynchronously
   (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
+  	var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+  	if (d.getElementById(id)) {return;}
+  	js = d.createElement('script'); js.id = id; js.async = true;
+  	js.src = "//connect.facebook.net/en_US/all.js";
+  	ref.parentNode.insertBefore(js, ref);
+  }(document));
 
   function login() {
-    FB.login(function(response) {
-        if (response.authResponse) {
+  	FB.login(function(response) {
+  		if (response.authResponse) {
             // connected
             testAPI();
         } else {
@@ -326,22 +342,28 @@ $( document ).on( "pageinit", function() {
   }
 
   function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-        console.log('Good to see you, ' + response.name + '.');
-    });
-	}
+  	console.log('Welcome!  Fetching your information.... ');
+  	FB.api('/me', function(response) {
+  		console.log('Good to see you, ' + response.name + '.');
+  		window.location="#page1";
+  	});
+  }
 
-	function logout(){
-	FB.logout(function(response) {
-  FB.Auth.setAuthResponse(null, 'unknown');
-	});
-	window.location="login.html";
-	}
-</script>
+  function logout() {
+  	FB.init({ 
+  		appId:'478157508874436', 
+  		cookie:true, 
+  		status:true, 
+  		xfbml:true
+  	});
+  	FB.logout(function() {
+  		window.location = '#page2';
+  	});
+  }
+  </script>
 
-<div data-role="page">
-	<div data-role="header" data-theme="b">
+  <div data-role="page" id="page1">
+  	<div data-role="header" data-theme="b">
 		<!--<div id = "chi_container">
 			<div><img src="blueprint_logo.png" style="min-width: 50px; min-height: 20px" alt="BLUEPRINT" /></div>
 		</div>-->
@@ -352,158 +374,169 @@ $( document ).on( "pageinit", function() {
 		<br />
 		
 		<p id="title_Blueprint" style="font-size: 58px; margin-top: 10px; margin-bottom: 0px; margin-left: 10px; margin-right: 10px; text-align: center; font-family: 'Reenie Beanie', cursive;">
-		Welcome to your Blueprint</p>
-		<div data-role="controlgroup" data-type="horizontal">
-			<div class="ui-btn-right">
-				<a href="#settings" data-icon="gear" data-role="button" data-rel="popup" data-theme="d">Settings</a>
-				<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
-				<a href="index.html" data-icon="refresh" data-role="button" data-theme="d" onclick="FB.logout()">Logout</a>
-			</div>
-			
-<div data-role="popup" id="settings"> 
-	<div data-role="content">
-		<form action="">
-        <a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitSettings()">Update Settings</a>
-        </form>
-	</div>
-</div> <!-- closing of settings popup -->
+			Welcome to your Blueprint</p>
+			<div data-role="controlgroup" data-type="horizontal">
+				<div class="ui-btn-right">
+					<a href="#settings" data-icon="gear" data-role="button" data-rel="popup" data-theme="d">Settings</a>
+					<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" data-theme="d">Add Task</a>
+					<a href="#page1" data-icon="refresh" data-role="button" data-theme="d" onclick="logout()">Logout</a>
+				</div>
 
-			
-<div data-role="popup" id="addTask">
-    <div data-role="content">
-        <form action="">
-            <div data-role="fieldcontain">
-                    <label for="description">
-                        Description
-                    </label>
-                    <input name="description" id="description" placeholder="Enter task description"
-                    value="" type="text">
-            </div>
-            <div data-role="fieldcontain">
-                    <label for="startdate">
-                    Start
-                    </label>
-                    <input name="" id="startdate" placeholder="" value="" type="date">
-            </div>            
-            <div data-role="fieldcontain">
-                    <label for="deadline">
-                        Deadline
-                    </label>
-                    <input name="" id="deadline" placeholder="" value="" type="date">
-            </div>
-            <div data-role="fieldcontain">
-            	<fieldset data-role="controlgroup" data-type="horizontal">
-                    <legend>
-                        Priority:
-                    </legend>
-                    <input id="high" name="" value="high" type="radio" checked="checked">
-                    <label for="high">
-                        	High
-                    </label>
-                    <input id="medium" name="" value="medium" type="radio">
-                    <label for="medium">
-                    	Medium
-                    </label>
-                    <input id="low" name="" value="low" type="radio">
-                    <label for="low">
-                        Low
-                    </label>
-                </fieldset>
-        	</div>
-        	<script type='text/javascript'>
-    
-    function submitTask(){
-    
-    	var taskToAdd = {};
-    	
-    	taskToAdd.description = $("#description").val();
-    	taskToAdd.start = $("#startdate").val();
-    	taskToAdd.end = $("#deadline").val();
-    	taskToAdd.priority = function(){
-    			if($("#high").attr("checked")=="checked")
-    			{
-    				return 'high';
-    			}
-    			else if($("#medium").attr("checked")=="checked")
-    			{
-    				return 'medium';
-    			}
-    			else
-    			{
-    				return 'low';
-    			}
-    		}();
-    	
-    	var taskId = TaskDB.addTask(taskToAdd);
-    
-    	var newTask=[
-    	{
-    		id : taskId,
-    		title : $("#description").val(),
-    		start : new Date($("#startdate").val()),
-    		end : new Date($("#deadline").val()),
-    		color : function(){
-    			if($("#high").attr("checked")=="checked")
-    			{
-    				console.log("high checked");
-    				return '#378006';
-    			}
-    			else if($("#medium").attr("checked")=="checked")
-    			{
-    				console.log("medium checked");
-    				return '#300000';
-    			}
-    			else
-    			{
-    				console.log("low checked");
-    				return '#304050';
-    			}
-    		}()
-    	}
-    	];
-    	
-    	$('#calendar').fullCalendar( 'addEventSource', newTask );
-    }
+				<div data-role="popup" id="settings"> 
+					<div data-role="content">
+						<form action="">
+							<a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitSettings()">Update Settings</a>
+						</form>
+					</div>
+				</div> <!-- closing of settings popup -->
 
-</script>
-        <a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitTask()">Add Task</a>
-        </form>
-    </div>  
-</div>	<!-- closing of add task popup -->
-			
-			
-			
+
+				<div data-role="popup" id="addTask">
+					<div data-role="content">
+						<form action="">
+							<div data-role="fieldcontain">
+								<label for="description">
+									Description
+								</label>
+								<input name="description" id="description" placeholder="Enter task description"
+								value="" type="text">
+							</div>
+							<div data-role="fieldcontain">
+								<label for="startdate">
+									Start
+								</label>
+								<input name="" id="startdate" placeholder="" value="" type="date">
+							</div>            
+							<div data-role="fieldcontain">
+								<label for="deadline">
+									Deadline
+								</label>
+								<input name="" id="deadline" placeholder="" value="" type="date">
+							</div>
+							<div data-role="fieldcontain">
+								<fieldset data-role="controlgroup" data-type="horizontal">
+									<legend>
+										Priority:
+									</legend>
+									<input id="high" name="" value="high" type="radio" checked="checked">
+									<label for="high">
+										High
+									</label>
+									<input id="medium" name="" value="medium" type="radio">
+									<label for="medium">
+										Medium
+									</label>
+									<input id="low" name="" value="low" type="radio">
+									<label for="low">
+										Low
+									</label>
+								</fieldset>
+							</div>
+							<script type='text/javascript'>
+
+							function submitTask(){
+								var taskToAdd = {};
+
+								taskToAdd.description = $("#description").val();
+								taskToAdd.start = $("#startdate").val();
+								taskToAdd.end = $("#deadline").val();
+								taskToAdd.priority = function(){
+									if($("#high").attr("checked")=="checked")
+									{
+										return 'high';
+									}
+									else if($("#medium").attr("checked")=="checked")
+									{
+										return 'medium';
+									}
+									else
+									{
+										return 'low';
+									}
+								}();
+
+								var taskId = TaskDB.addTask(taskToAdd);
+								var newTask=[
+								{
+									id : taskId,
+									title : $("#description").val(),
+									start : new Date($("#startdate").val()),
+									end : new Date($("#deadline").val()),
+									color : function(){
+										if($("#high").attr("checked")=="checked")
+										{
+											console.log("high checked");
+											return '#378006';
+										}
+										else if($("#medium").attr("checked")=="checked")
+										{
+											console.log("medium checked");
+											return '#300000';
+										}
+										else
+										{
+											console.log("low checked");
+											return '#304050';
+										}
+									}()
+								}
+								];
+
+								$('#calendar').fullCalendar( 'addEventSource', newTask );
+							}
+
+							</script>
+							<a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitTask()">Add Task</a>
+						</form>
+					</div>  
+				</div>	<!-- closing of add task popup -->
+
+
+
 		<!--	<div data-role="popup" id="addTask">
 				<p>This is a completely basic popup, no options set.<p>
 			</div>
-			-->
-		</div><!-- /controlgroup -->
-	</div><!-- /header -->
-	
-	<div data-role="content" id='calendar'>		
-						
-		<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
-			<div data-role = "header" id="title"></div>
-			<div id="task_desc"></div>
-			<div id="start"></div>
-			<div id="end"></div>
-			<div id="url"></div>
-			<div id="progressbar">  </div>
-		</div>
-	
-	</div><!-- /content -->
+		-->
+	</div><!-- /controlgroup -->
+</div><!-- /header -->
 
+<div data-role="content" id='calendar'>		
+
+	<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
+		<div data-role = "header" id="title"></div>
+		<div id="task_desc"></div>
+		<div id="start"></div>
+		<div id="end"></div>
+		<div id="url"></div>
+		<div id="progressbar">  </div>
+	</div>
 	
-	<div data-role="footer" data-position="fixed" data-theme="b"> 
-		<div data-role="navbar">
-			<ul>
-				<li><a href="" onclick="showDayView()">Day View</a></li>
-				<li><a href="" onclick="showWeekView()">Week View</a></li>
-				<li><a href="" onclick="showMonthView()">Month View</a></li>
-			</ul>
-		</div><!-- /navbar -->
-	</div> <!--/footer-->
+</div><!-- /content -->
+
+
+<div data-role="footer" data-position="fixed" data-theme="b"> 
+	<div data-role="navbar">
+		<ul>
+			<li><a href="" onclick="showDayView()">Day View</a></li>
+			<li><a href="" onclick="showWeekView()">Week View</a></li>
+			<li><a href="" onclick="showMonthView()">Month View</a></li>
+		</ul>
+	</div><!-- /navbar -->
+</div> <!--/footer-->
 </div><!-- /page -->
+
+<div data-role="page" id="page2">
+
+	<div data-role="content">
+
+		<a class="fb-button" onClick="login();">Login with Facebook</a>
+		<div class="center-wrapper">
+			<img id="bg1" src="lo.png" alt="BLUEPRINT" />
+		</div>
+
+	</div>
+
+</div>
 
 </body>
 </html>
