@@ -83,20 +83,35 @@
 					},
 
 					eventClick: function(calEvent, jsEvent, view) {
-
-
-						console.log(calEvent.title);
-        		// change the border color just for fun
+        
+				//var taskvar = "Task No "
+				console.log(calEvent.title);
         		$('#popupPanel').popup("open");
         		$(this).css('border-color', 'red');
-        		$('#title').html("Task Info");
-        		$('#task_desc').html(calEvent.title);
-        		$('#start').html(calEvent.start.toDateString());
-        		$('#end').html(calEvent.end.toDateString());
+       	     	$('#title').html("Task Info");
+       			$('#id').html( calEvent.id);
+				console.log(calEvent.id);
+				$('#task_desc').html(calEvent.title);
+				var str = new String("Hello world");
+				$('#url').html(calEvent.url);
+				var test = calEvent.color;
+				//console.log(calEvent.color);
+				//console.log("vikas");
+				
+				if(calEvent.color == "#378006"){
+				$('#priority').html("High");
+				}
+				else if(calEvent.color == "#300000"){
+				$('#priority').html("Medium");
+				}
+				else{
+				$('#priority').html("Low");
+				}
+				$( "#progressbar" ).progressbar({ value :41});
+				$('#start').html(calEvent.start.toDateString());
+				$('#end').html(calEvent.end.toDateString());
 
-        		$('#url').html(calEvent.url);
-        		$( "#progressbar" ).progressbar({ value :41});
-        	}, 
+    	}, 	
 
         	editable: true,
         	events: eventsData
@@ -122,6 +137,46 @@ function showMonthView(){
 };
 
 </script>
+
+<script type="text/javascript">
+                    function editData(){
+                    var desc1data = $("#task_desc").text();
+                    //console.log("hello: " + desc11);
+                    $("#editDesc").attr("value", desc1data);
+
+  				var startdate1data = new Date($("#start").text());
+                    console.log(startdate1data.getFullYear()+'-'+checkTwoDigits(startdate1data.getMonth()+1)+'-'+checkTwoDigits(startdate1data.getDate()));
+                    console.log(startdate1data.toUTCString());
+					//document.getElementById('startdate1').value = startdate1data;
+					var startMonth = startdate1data.getMonth()+1;
+					//console.log(startMonth);
+					var startDate= checkTwoDigits(startdate1data.getDate());
+					 $("#editStart").attr("value", startdate1data.getFullYear()+'-'+startMonth+'-'+startDate);
+                
+
+                  
+                    var deadline1data = new Date($("#end").text());
+         //           console.log(deadline1data.getFullYear()+'-'+checkTwoDigits(deadline1data.getMonth())+'-'+checkTwoDigits(deadline1data.getDate()));
+           //         console.log(deadline1data.toUTCString());
+					//document.getElementById('startdate1').value = startdate1data;
+					console.log( deadline1data.getMonth());
+					var endMonth= deadline1data.getMonth()+1;
+					var endDate= checkTwoDigits(deadline1data.getDate());
+					 $("#editEnd").attr("value", deadline1data.getFullYear()+'-'+endMonth+'-'+endDate);
+                
+                }
+
+                function checkTwoDigits(input){
+                	console.log('a');
+                	if (input.toString().length == 1){
+
+                		return "0" + input;
+                	}
+                
+                		return input;
+                }
+                	</script>
+
 
 <script type='text/javascript'>
 
@@ -220,35 +275,34 @@ $( document ).on( "pageinit", function() {
 			left: auto !important;
 		}
 
-		#popupPanel {
-			width: 200px;
-			border: 1px solid #000;
-			border-right: none;
-			background: rgba(255,255,255,1);
-			margin: -1px 0;
-		}
+			#popupPanel 
+	{
+	 margin: 2em 20px;
+	text-align: center;
+		color: #000000;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	}
 		#popupPanel .ui-btn {
 			margin: 2em 15px;
 		}
 
-		#popupPanel #task_desc, #start, #end
-		{
-			margin: 1em 10px;
-			text-align: center;
-			color: #FFFFFF;
-			font-size: 14px;
-			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		}
-
-		#popupPanel #title
-		{
-			margin: 2em 15px;
-			text-align: center;
-			color: #FFFFFF;
-			font-size: 18px;
-			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		}	
 		
+		#popupPanel, #editTask {
+		width: 300px;
+		border: 1px solid #000;
+		border-right: none;
+		background: rgba(255,255,255,1);
+		margin: 1px 0;
+	}
+	#popupPanel #title
+	{
+	 margin: 2em 15px	;
+	text-align: center;
+		color: #FFFFFF;
+		font-size: 18px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	}	
 		#chi_container div, #chi_container img{
 			top: 0;
 			left: 0;
@@ -459,21 +513,8 @@ $( document ).on( "pageinit", function() {
 
 								taskToAdd.description = $("#description").val();
 								taskToAdd.start = $("#startdate").val();
-								taskToAdd.end = $("#deadline").val();
-								taskToAdd.priority = function(){
-									if($("#high").attr("checked")=="checked")
-									{
-										return 'high';
-									}
-									else if($("#medium").attr("checked")=="checked")
-									{
-										return 'medium';
-									}
-									else
-									{
-										return 'low';
-									}
-								}();
+								
+																
 
 								var taskId = TaskDB.addTask(taskToAdd);
 								var newTask=[
@@ -501,10 +542,54 @@ $( document ).on( "pageinit", function() {
 									}()
 								}
 								];
-
+						console.log($("#startdate").val());
 								$('#calendar').fullCalendar( 'addEventSource', newTask );
 							}
+							
+							
+						function editTask(){
+						
+						console.log("edit task called");
+								var taskToAdd = {};
 
+								taskToAdd.description = $("#editDesc").val();
+								taskToAdd.start = $("#editStart").val();
+								
+								console.log($("#editStart").val());
+								
+
+								//var taskId = TaskDB.addTask(taskToAdd);
+								var newTask=[
+								{	id: $("#id").val(),
+									title : $("#editDesc").val(),
+									start : new Date($("#editStart").val()),
+									end : new Date($("#editEnd").val()),
+									color : function(){
+										if($("#editHigh").attr("checked")=="checked")
+										{
+											console.log("high checked");
+											return '#378006';
+										}
+										else if($("#editMedium").attr("checked")=="checked")
+										{
+											console.log("medium checked");
+											return '#300000';
+										}
+										else
+										{
+											console.log("low checked");
+											return '#304050';
+										}
+									}()
+								}
+								];
+						console.log($("#editStart").val());								
+								console.log($("#id").html());
+							   	$('#calendar').fullCalendar( 'removeEvents', $("#id").html());
+							   	
+								$('#calendar').fullCalendar( 'addEventSource', newTask );
+							}
+							
 							</script>
 							<a href="" id="addtaskbutton" data-role="button" data-theme="b" onclick="submitTask()">Add Task</a>
 						</form>
@@ -521,17 +606,103 @@ $( document ).on( "pageinit", function() {
 </div><!-- /header -->
 
 <div data-role="content" id='calendar'>		
+		<!--greebo		-->			
+			<div data-role="popup" id="popupPanel" >
+				<div data-role="header">
+						<div id = "task_desc"></div>
+				</div> 	  
+		
+				<div data-role="fieldcontain">	
+					<label  style="float: left; text-align: center;" id = "idlabel">
+					Task Number: 
+					</label>
+					<div id = "id"  style="float: left; text-align: center;"></div>    
+				</div>		
+			
+				<div data-role="fieldcontain">	
+					<label  style="float: left; text-align: center;" id = "startlabel">
+						Start Date: 
+					</label>	 
+						<div id = "start" ></div>	
+				</div>	
+				<div data-role="fieldcontain">	
+					<label  style="float: left; text-align: center;" id = "endlabel">
+						End Date: 
+					</label>
+					<div id="end" ></div>
+				</div>	
+				<div data-role="fieldcontain">					
+					<label  style="float: left; text-align: center;" id = "prioritylabel">
+						Priority: 
+					</label>	
+					<div id= "priority"></div>
+				</div>	
+				
 
-	<div data-role="popup" id="popupPanel" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
-		<div data-role = "header" id="title"></div>
-		<div id="task_desc"></div>
-		<div id="start"></div>
-		<div id="end"></div>
-		<div id="url"></div>
-		<div id="progressbar">  </div>
-	</div>
+				<a href="#editTask" data-role="button" data-inline="true" data-rel="popup" data-theme="d" onclick="editData()">Edit</a>
+				<a href="" data-role="button" data-inline="true" onclick="deleteTask()" data-theme="b">Delete</a>
+
+			<div data-role="popup" id="editTask">
+			    <div data-role="content">
+			        <form action="">
+			            <div data-role="fieldcontain">	
+			                    <label for="editDesc">
+			                        Description
+			                    </label>
+			                   
+			                    <input name="editDesc" id="editDesc" type="text">
+			            </div>
+			            <div data-role="fieldcontain">
+			                    <label for="editStart">
+			                    Start
+			                    </label>
+			                    <input name="editStart" id="editStart"  type="date">
+			            </div>            
+			            <div data-role="fieldcontain">
+			                    <label for="editEnd">
+			                        Deadline
+			                    </label>
+			                    <input name="editEnd" id="editEnd"  type="date">
+			            </div>
+			            <div data-role="fieldcontain">
+								<fieldset data-role="controlgroup" data-type="horizontal">
+									<legend>
+										Priority:
+									</legend>
+									<input id="high" name="" value="high" type="radio" checked="checked">
+									<label for="high">
+										High
+									</label>
+									<input id="medium" name="" value="medium" type="radio">
+									<label for="medium">
+										Medium
+									</label>
+									<input id="low" name="" value="low" type="radio">
+									<label for="low">
+										Low
+									</label>
+								</fieldset>
+							</div>
+			        	
+			<script type='text/javascript'>
+			function deleteTask(){
+			    	console.log($("#id").html());
+			    	$('#calendar').fullCalendar( 'removeEvents', $("#id").html());
+			}
+				        	</script>
+	      
+<a href="" data-role="button" data-role="button" data-inline="true" data-theme="b" onclick="editTask()">Edit</a>
+					
+						
+						
+				        </form>
+				    </div>  
+			</div>
+						
+			</div>
+
 	
-</div><!-- /content -->
+	</div><!-- /content -->
 
 
 <div data-role="footer" data-position="fixed" data-theme="b"> 
