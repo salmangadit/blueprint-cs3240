@@ -25,6 +25,9 @@
         <script src="makisu.js"></script>
         <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
         <script type='text/javascript'>
+		var colorhigh = "#ff4d4d";
+	var colormedium = "#4effff";
+	var colorlow = "#9a9a9a";
         $(document).ready(function() {
 
                 if(($(window).width() < 480) || ($(window).height() < 480)){
@@ -66,17 +69,17 @@
                                         if(rows.item(i).priority === 0)
                                         {
                                                 console.log("setting color for high");
-                                                return '#378006';
+                                                return colorhigh;
                                         }
                                         else if(rows.item(i).priority === 1)
                                         {
                                                 console.log("setting color for medium");
-                                                return '#300000';
+                                                return colormedium;
                                         }
                                         else
                                         {
                                                 console.log("setting color for low");
-                                                return '#304050';
+                                                return colorlow;
                                         }
                                 }();
 
@@ -108,10 +111,10 @@
                 //console.log(calEvent.color);
                 //console.log("vikas");
                 
-                if(calEvent.color == "#378006"){
+                if(calEvent.color == colorhigh){
                         $('#priority').html("High");
                 }
-                else if(calEvent.color == "#300000"){
+                else if(calEvent.color == colormedium){
                         $('#priority').html("Medium");
                 }
                 else{
@@ -582,17 +585,17 @@ var newTask=[
                 if($("#high").attr("checked")=="checked")
                 {
                         console.log("high checked");
-                        return '#378006';
+                        return colorhigh;
                 }
                 else if($("#medium").attr("checked")=="checked")
                 {
                         console.log("medium checked");
-                        return '#300000';
+                        return colormedium;
                 }
                 else
                 {
                         console.log("low checked");
-                        return '#304050';
+                        return colorlow;
                 }
         }()
 }
@@ -619,17 +622,17 @@ getAllTasks(function(rows){
                                         if(rows.item(i).priority === 0)
                                         {
                                                 console.log("setting color for high");
-                                                return '#378006';
+                                                return colorhigh;
                                         }
                                         else if(rows.item(i).priority === 1)
                                         {
                                                 console.log("setting color for medium");
-                                                return '#300000';
+                                                return colormedium;
                                         }
                                         else
                                         {
                                                 console.log("setting color for low");
-                                                return '#304050';
+                                                return colorlow;
                                         }
                                 }();
 
@@ -707,17 +710,17 @@ var newTask=[
                 if($("#editHigh").attr("checked")=="checked")
                 {
                         console.log("high checked");
-                        return '#378006';
+                        return colorhigh;
                 }
                 else if($("#editMedium").attr("checked")=="checked")
                 {
                         console.log("medium checked");
-                        return '#300000';
+                        return colormedium;
                 }
                 else
                 {
                         console.log("low checked");
-                        return '#304050';
+                        return colorlow;
                 }
         }()
 }
@@ -807,7 +810,7 @@ if ( $.fn.makisu.enabled ) {
 </script>
 
 <div data-role="page" id="page1">
-        <div data-role="header">
+        <div data-role="header" style="background: #0B4E82;">
 <!--<div id = "chi_container">
         <div><img src="blueprint_logo.png" style="min-width: 50px; min-height: 20px" alt="BLUEPRINT" /></div>
 </div>-->
