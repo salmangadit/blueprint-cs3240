@@ -94,6 +94,15 @@ var db = prepareDatabase();
 		
 		}
 		
+		// delete all the rows in the table
+        function clearDB() {
+            if(confirm('Clear the entire table?')) {
+                db.transaction(function(t) {
+                    t.executeSql('DELETE FROM tasks');
+                });
+            }
+        }
+		
 		// gets task with specific id
 		// @param id of task
 		// @param callbackTask, Callback function that 
