@@ -117,27 +117,27 @@
 
 		//$(this).css('border-color', 'red');
 		$('#title').html("Task Info");
-		$('#id').html( calEvent.id);
-		console.log(calEvent.id);
-		$('#task_desc').html(calEvent.title);
+		//$('#id').html( calEvent.id);
+		//console.log(calEvent.id);
+		$('#task_desc').html("Title: " + calEvent.title);
 		var str = new String("Hello world");
-		$('#url').html(calEvent.url);
+		$('#url').html("URL: " + calEvent.url);
 		var test = calEvent.color;
 		//console.log(calEvent.color);
 		//console.log("vikas");
 		
 		if(calEvent.color == colorhigh){
-			$('#priority').html("High");
+			$('#priority').html("Priority: High");
 		}
 		else if(calEvent.color == colormedium){
-			$('#priority').html("Medium");
+			$('#priority').html("Priority: Medium");
 		}
 		else{
-			$('#priority').html("Low");
+			$('#priority').html("Priority: Low");
 		}
 		$( "#progressbar" ).progressbar({ value :41});
-		$('#start').html(calEvent.start.toDateString());
-		$('#end').html(calEvent.end.toDateString());
+		$('#start').html("Start Date: " + calEvent.start.toDateString());
+		$('#end').html("End Date: " + calEvent.end.toDateString());
 
 	}, 	
 
@@ -350,7 +350,6 @@ console.log("reseting screen");
 						width: auto; /* for ie 8 */
 					}
 				}
-
 
 				</style>
 			</head> 
@@ -721,6 +720,8 @@ if ( $.fn.makisu.enabled ) {
 	$( '.warning' ).show();
 }
 }
+
+
 </script>
 
 <div data-role="page" id="page1">
@@ -806,20 +807,25 @@ if ( $.fn.makisu.enabled ) {
 							<legend>
 								Priority:
 							</legend>
-							<input id="high" name="" value="high" type="radio" checked="checked">
-							<label for="high">
-								High
-							</label>
-							<input id="medium" name="" value="medium" type="radio">
-							<label for="medium">
-								Medium
-							</label>
-							<input id="low" name="" value="low" type="radio">
-							<label for="low">
-								Low
-							</label>
-						</fieldset>
+						
+								<input id="high" name="" value="high" type="radio" checked="checked">
+								<label for="high" style="background:#ff4d4d;">
+									High
+								</label>
+								
+								<input id="medium" name="" value="medium" type="radio">
+								<label for="medium" style="background:#4effff">
+									Med.
+								</label>
+								
+								<input id="low" name="" value="low" type="radio">
+								<label for="low" style="background:#9a9a9a">
+									Low
+								</label>
+
+							</fieldset>
 					</div>
+					
 					<a href="" id="addtaskbutton" data-role="button" data-theme="d" onclick="submitTask()">Add Task</a>
 				</form>
 			</div>  
@@ -834,13 +840,13 @@ if ( $.fn.makisu.enabled ) {
 		
 		<div data-role="header">
 			<dl class='list-description maki'>
-				<dt id = "task_desc"></dt>
-				<dd><a id = "id" href='#' style='color: black;'></a></dd>
+				<dt id = "task_desc" style='color: #0B4E82; font-size: medium'></dt>
+				<!--<dd><a id = "id" href='#' style='color: black;'></a></dd>-->
 				<dd><a id = "start" href='#' style='color: black;'></a></dd>
 				<dd><a id="end" href='#' style='color: black;'></a></dd>
 				<dd><a id= "priority" href='#' style='color: black;'></a></dd>
-				<dd><a href='#editTask' style='color: black;' data-mini="true" data-rel="popup" data-rel="popup"  onclick="editData()">Edit</a></dd>
-				<dd><a href="" data-mini="true" onclick="deleteTask()">Delete</a></dd>
+				<dd><a href='#editTask' style='color: red; font-size: medium' data-mini="true" data-rel="popup" data-rel="popup"  onclick="editData()">Edit</a></dd>
+				<dd><a href="" data-mini="true" style='color: red; font-size: medium' onclick="deleteTask()">Delete</a></dd>
 			</dl>
 			<!-- <div id = "task_desc"></div> -->
 		</div> 	  
@@ -942,7 +948,7 @@ if ( $.fn.makisu.enabled ) {
 </div> <!--/footer-->
 </div><!-- /page -->
 
-<div data-role="page" id="page2" data-transition="pop">
+<div data-role="page" id="page2" data-theme="b" data-transition="pop">
 
 
 	<div data-role="content" data-theme="b">
