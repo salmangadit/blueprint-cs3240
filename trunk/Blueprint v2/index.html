@@ -119,7 +119,7 @@
 		$('#title').html("Task Info");
 		//$('#id').html( calEvent.id);
 		//console.log(calEvent.id);
-		$('#task_desc').html("Title: " + calEvent.title);
+		$('#task_desc').html(calEvent.title);
 		var str = new String("Hello world");
 		$('#url').html("URL: " + calEvent.url);
 		var test = calEvent.color;
@@ -203,6 +203,13 @@ function editData(){
 
 			return input;
 		}
+
+		function vikasclick() {
+		$('embed').remove();
+		        console.log("vikas");
+		$('#trytry').append('<embed src="button-47.wav" autostart="true" hidden="true" loop="false">');
+		}
+
 		</script>
 
 
@@ -429,6 +436,7 @@ function logout() {
 }
 
 function submitTask(){
+	$('#addTask').popup('close');
 	var startDate = new Date($("#startdate").val());
 	var endDate = new Date($("#deadline").val());
 								
@@ -445,6 +453,9 @@ function submitTask(){
 		"<p> Deadline has already passed! </p>"
 	})
 
+	$('embed').remove();
+ 	$('#trytry').append('<embed src="Critical.wav" autostart="true" hidden="true" loop="false">');
+
 	return;
 }
 
@@ -459,6 +470,9 @@ if (new Date($("#deadline").val()) < new Date($("#startdate").val()))
 		"<p> Deadline cannot be before start date! </p>"
 	})
 
+	$('embed').remove();
+ 	$('#trytry').append('<embed src="Critical.wav" autostart="true" hidden="true" loop="false">');
+
 	return;
 }
 
@@ -472,6 +486,9 @@ if ($("#deadline").val() == "" || $("#startdate").val() == "" || $("#description
 		blankContent : 
 		"<p> Fill in all fields! </p>"
 	})
+
+	$('embed').remove();
+ 	$('#trytry').append('<embed src="Critical.wav" autostart="true" hidden="true" loop="false">');
 
 	return;
 }
@@ -531,34 +548,34 @@ var addBackData=[];
 
 getAllTasks(function(rows){
 
-                        for(var i=0; i < rows.length; i++)
-                        {
-                                var eventData = {};
-                                eventData.id = rows.item(i).id;
-                                eventData.title = rows.item(i).description;
-                                eventData.start = rows.item(i).start;
-                                eventData.end = rows.item(i).end;
-                                eventData.color = function(){
-                                        if(rows.item(i).priority === 0)
-                                        {
-                                                console.log("setting color for high");
-                                                return colorhigh;
-                                        }
-                                        else if(rows.item(i).priority === 1)
-                                        {
-                                                console.log("setting color for medium");
-                                                return colormedium;
-                                        }
-                                        else
-                                        {
-                                                console.log("setting color for low");
-                                                return colorlow;
-                                        }
-                                }();
+    for(var i=0; i < rows.length; i++)
+    {
+            var eventData = {};
+            eventData.id = rows.item(i).id;
+            eventData.title = rows.item(i).description;
+            eventData.start = rows.item(i).start;
+            eventData.end = rows.item(i).end;
+            eventData.color = function(){
+                    if(rows.item(i).priority === 0)
+                    {
+                            console.log("setting color for high");
+                            return colorhigh;
+                    }
+                    else if(rows.item(i).priority === 1)
+                    {
+                            console.log("setting color for medium");
+                            return colormedium;
+                    }
+                    else
+                    {
+                            console.log("setting color for low");
+                            return colorlow;
+                    }
+            }();
 
-                                addBackData.push(eventData);
-                        }
-                        $("#calendar").fullCalendar('addEventSource', addBackData);
+            addBackData.push(eventData);
+    }
+    $("#calendar").fullCalendar('addEventSource', addBackData);
                                 
 });
                         
@@ -571,6 +588,9 @@ $('#startdate').val('');
 $('#deadline').val('');
 
 // Alert user of success
+$('embed').remove();
+$('#trytry').append('<embed src="button-47.wav" autostart="true" hidden="true" loop="false">');
+
 //alert('Task Added!');
 $('#addTask').popup( "close" );
 console.log('Here');
@@ -602,9 +622,9 @@ FB.api('/me/picture?type=large', function(response) {
 			headerClose: true,
 			blankContent : 
 			"<img src='"+profileImage+"' />" +
-			"<p> Connected via Facebook as <strong>"+ name + "</strong> <br />" +
+			"<p> Connected via Facebook as <strong>"+ name + "</strong> <br />"
 		// NOTE: the use of rel="close" causes this button to close the dialog.
-		"<a rel='close' data-role='button' href='#'>Close</a>"
+		//"<a rel='close' data-role='button' href='#'>Close</a>"
 	});
 
 	})
@@ -673,12 +693,11 @@ function deleteTask(){
 
 function showAbout(){
 $('#settings').popup( "close" );
-$('<div>').simpledialog2({
+$('<div id="aboutPopup">').simpledialog2({
 		//mode: 'blank',
 		//headerText: 'The Team!',
 		//headerClose: true,
 		blankContent : 
-		"<div>" +
 		"<dl class='list maki'>" +
 			"<dt>Created By:</dt>" +
 			"<dd><a href='#' style='color: black;'>Arnab Ghosh</a></dd>" +
@@ -686,8 +705,8 @@ $('<div>').simpledialog2({
 			"<dd><a href='#' style='color: black;'>Saikrishnan Ranganathan</a></dd>" +
 			"<dd><a href='#' style='color: black;'>Salman Gadit</a></dd>" +
 			"<dd><a href='#' style='color: black;'>Vikas Subramanian</a></dd>" +
-		"</dl>" +
-		"</div>"
+			"<dd><a href='' style='color: black;' onclick='$.mobile.sdCurrentDialog.close()'>CLOSE</a></dd>" +
+		"</dl>"
 	});
 //Add KeyUp even listener
 $(document).keyup(function(e) {
@@ -739,8 +758,8 @@ if ( $.fn.makisu.enabled ) {
 	Welcome to your Blueprint</p>
 	<div data-role="controlgroup" data-type="horizontal" data-theme="a">
 		<div class="ui-btn-right">
-			<a href="#settings" data-icon="gear" data-role="button" data-rel="popup" >Settings</a>
-			<a href="#addTask" data-icon="plus" data-role="button" data-rel="popup" >Add Task</a>
+			<a href="#settings" data-icon="gear" data-role="button" data-rel="popup">Settings</a>
+			<a href="#addTask" id="trytry" data-icon="plus" data-role="button" data-rel="popup">Add Task</a>
 			<a href="#page1" data-icon="refresh" data-role="button" onclick="logout()">Logout</a>
 		</div>
 		
@@ -809,17 +828,17 @@ if ( $.fn.makisu.enabled ) {
 							</legend>
 						
 								<input id="high" name="" value="high" type="radio" checked="checked">
-								<label for="high" style="background:#ff4d4d;">
+								<label for="high">
 									High
 								</label>
 								
 								<input id="medium" name="" value="medium" type="radio">
-								<label for="medium" style="background:#4effff">
+								<label for="medium">
 									Med.
 								</label>
 								
 								<input id="low" name="" value="low" type="radio">
-								<label for="low" style="background:#9a9a9a">
+								<label for="low">
 									Low
 								</label>
 
@@ -948,16 +967,13 @@ if ( $.fn.makisu.enabled ) {
 </div> <!--/footer-->
 </div><!-- /page -->
 
-<div data-role="page" id="page2" data-theme="b" data-transition="pop">
-
-
+<div data-role="page" id="page2" data-transition="pop" data-theme="b">
 	<div data-role="content" data-theme="b">
 		<a class="zocial facebook" onClick="login();">Login with Facebook</a>
 		<div class="center-wrapper">
 			<img id="bg1" src="lo.png" alt="BLUEPRINT" />
 		</div>	
 	</div>
-
 </div>
 
 </body>
