@@ -358,6 +358,20 @@ console.log("reseting screen");
 					}
 				}
 
+		#highdiv:active {
+		background-image: -webkit-linear-gradient(#ff4d4d,#FFFFFF);
+		}
+		
+		#mediumdiv:active {
+		background-image: -webkit-linear-gradient(#4effff,#FFFFFF);
+		}
+		
+		#lowdiv:active {
+		background-image: -webkit-linear-gradient(#9a9a9a,#FFFFFF);
+		}
+		
+
+		
 				</style>
 			</head> 
 			<body> 
@@ -828,17 +842,17 @@ if ( $.fn.makisu.enabled ) {
 							</legend>
 						
 								<input id="high" name="" value="high" type="radio" checked="checked">
-								<label for="high">
+								<label for="high" id="highdiv">
 									High
 								</label>
 								
 								<input id="medium" name="" value="medium" type="radio">
-								<label for="medium">
+								<label for="medium" id="mediumdiv">
 									Med.
 								</label>
 								
 								<input id="low" name="" value="low" type="radio">
-								<label for="low">
+								<label for="low" id="lowdiv">
 									Low
 								</label>
 
